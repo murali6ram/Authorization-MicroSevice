@@ -1,0 +1,282 @@
+﻿@model IdentityServer.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+    <!-- We are not using _Layout for full page -->
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - RAM SIGN</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+
+        body {
+            background-color: #000; /* black background */
+            background-image: url('@Url.Content("~/images/login-bg.jpg")');
+            background-repeat: no-repeat;
+            background-position: left center; /* center the image */
+            background-size: 900px auto; /* width 300px, auto height */
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center; /* keep vertical center */
+            justify-content: flex-end; /* move to right */
+            padding: 15px; /* prevents content touching edges on mobile */
+            margin-right: 50px;
+        }
+
+
+        .login-card {
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-card h3 {
+                text-align: center;
+                margin-bottom: 25px;
+                font-weight: bold;
+                color: #fff;
+            }
+
+        .btn-custom {
+            background: #ADD8E6;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+            .btn-custom:hover {
+                background: #2575fc;
+                color: white;
+            }
+
+        .form-label {
+            color: #fff; /* white */
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="d-flex justify-content-end mb-2">
+        <button id="themeToggle" class="btn btn-outline-secondary btn-sm">
+            🌞 / 🌙
+        </button>
+    </div> -->
+
+    <div class="login-container">
+        <div class="login-card">
+            <h3>Welcome to RAM SIGN</h3>
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "needs-validation" }))
+            {
+                <div class="mb-3">
+                    @Html.Label("PhoneNumberOrEmail", "PhoneNumber / Email", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter phone number or email", id = "PhoneNumberOrEmail" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.UserEmail, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Otp, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Otp, new { @class = "form-control", placeholder = "Enter password" })
+                    @Html.ValidationMessageFor(m => m.Otp, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-custom w-100">Login</button>
+
+                <div class="text-center mt-3">
+                    <a href="#" class="text-decoration-none">Forgot Password?</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // function to check inputs
+        function checkInputs() {
+            const usernameOrEmail = document.getElementById("PhoneNumberOrEmail").value.trim();
+            const otp = document.getElementById("Otp").value.trim();
+            const btn = document.querySelector(".btn-custom");
+
+            if (usernameOrEmail !== "" && otp !== "") {
+                btn.style.background = "#2575fc"; // blue
+            } else {
+                btn.style.background = "#ADD8E6"; // light blue
+            }
+        }
+
+        document.getElementById("PhoneNumberOrEmail").addEventListener("input", checkInputs);
+        document.getElementById("Otp").addEventListener("input", checkInputs);
+
+        checkInputs();
+    </script>
+
+</body>
+</html>
+
+<script>
+    if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
+
+    document.getElementById("themeToggle").addEventListener("click", function () {
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        if (currentTheme === "dark") {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+        } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+        }
+    });
+</script>
+
+
+@* @model IdentityServer.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - RAM SIGN</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        body {
+            background-color: #000;
+            background-image: url('@Url.Content("~/images/login-bg.jpg")');
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 900px auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 15px;
+            margin-right: 50px;
+        }
+
+        .login-card {
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-card h3 {
+                text-align: center;
+                margin-bottom: 25px;
+                font-weight: bold;
+                color: #fff;
+            }
+
+        .btn-custom {
+            background: #ADD8E6;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+            .btn-custom:hover {
+                background: #2575fc;
+                color: white;
+            }
+
+        .form-label {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h3>Welcome to RAM SIGN</h3>
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "needs-validation" }))
+            {
+                <!-- Username or Email -->
+                <div class="mb-3">
+                    @Html.Label("UsernameOrEmail", "Username / Email", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter username or email", id = "UsernameOrEmail" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.UserEmail, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- OTP -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Otp, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Otp, new { @class = "form-control", placeholder = "Enter OTP", id = "Otp" })
+                    @Html.ValidationMessageFor(m => m.Otp, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-custom w-100">Login</button>
+
+                <div class="text-center mt-3">
+                    <a href="#" class="text-decoration-none">Forgot Password?</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // function to check inputs
+        function checkInputs() {
+            const usernameOrEmail = document.getElementById("UsernameOrEmail").value.trim();
+            const otp = document.getElementById("Otp").value.trim();
+            const btn = document.querySelector(".btn-custom");
+
+            if (usernameOrEmail !== "" && otp !== "") {
+                btn.style.background = "#2575fc"; // blue
+            } else {
+                btn.style.background = "#ADD8E6"; // light blue
+            }
+        }
+
+        document.getElementById("UsernameOrEmail").addEventListener("input", checkInputs);
+        document.getElementById("Otp").addEventListener("input", checkInputs);
+
+        checkInputs();
+    </script>
+</body>
+</html> *@
+
+

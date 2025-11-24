@@ -1,0 +1,49 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\Sign\\Sign.Key\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9115A7F5-C1FB-4F89-BC43-96A8DFDC5E78}|Models\\Identity.Model\\Identity.Model.csproj|d:\\project\\sign\\sign.key\\models\\identity.model\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9115A7F5-C1FB-4F89-BC43-96A8DFDC5E78}|Models\\Identity.Model\\Identity.Model.csproj|solutionrelative:models\\identity.model\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\Sign\\Sign.Key\\Models\\Identity.Model\\Program.cs",
+              "RelativeDocumentMoniker": "Models\\Identity.Model\\Program.cs",
+              "ToolTip": "D:\\Project\\Sign\\Sign.Key\\Models\\Identity.Model\\Program.cs",
+              "RelativeToolTip": "Models\\Identity.Model\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T13:32:30.656Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
